@@ -1,0 +1,11 @@
+
+<link rel="stylesheet" href="Views/style.css">
+
+{% for article in articles %}
+<div class="article-container" >
+
+            <img src={{ article.getImageLink()}} >
+            <h2 class="headline">{{ article.getTitle()}}</h2>
+
+</div>
+{% endfor %}

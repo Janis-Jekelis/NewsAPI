@@ -1,7 +1,8 @@
 <?php
 declare(strict_types=1);
-use App\Api;
+use App\ArticleCollection;
 require_once __DIR__."/../vendor/autoload.php";
+
 $loader = new \Twig\Loader\FilesystemLoader(__DIR__."/../Public/Views");
 $twig = new \Twig\Environment($loader);
 
@@ -33,7 +34,8 @@ switch ($routeInfo[0]) {
         $handler = $routeInfo[1];
         [$class,$method]=[$handler[0],$handler[1]];
         $vars = $routeInfo[2];
-        $request=(new $class())->{$method}();
-        echo $request->getViewName();
+        $response=(new $class())->{$method}();
+
+        echo $twig->render($response->getViewName() . ".twig", $response->getData());
         break;
 }

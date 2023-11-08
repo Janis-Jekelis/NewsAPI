@@ -6,11 +6,13 @@ class Article
 {
 private string $title;
 private string $description;
-    public function __construct(string $title, string $description)
+private string $imageLink;
+    public function __construct(string $title, string $description, $imageLink)
     {
 
         $this->title = $title;
         $this->description = $description;
+        $this->imageLink=$imageLink;
     }
 
     public function getTitle(): string
@@ -22,5 +24,10 @@ private string $description;
     public function getDescription(): string
     {
         return $this->description;
+    }
+
+    public function getImageLink(): string
+    {
+        return $this->imageLink;
     }
 }

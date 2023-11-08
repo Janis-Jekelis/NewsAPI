@@ -1,14 +1,18 @@
 <?php
 declare(strict_types=1);
+
 namespace App\Controllers;
-use App\Api;
+
+use App\ArticleCollection;
 use App\Response;
 
 class ArticleController
 {
-    public function index():Response
+
+       public function index(?string $country = null, ?string $topic = null): Response
     {
-      return  new Response("index",(new Api("tesla"))->getArticles());
+        if ($country == null) $country = "us";
+        return new Response("index", ["articles" => (new ArticleCollection())->getHeadlines($country)]);
 
     }
 }
