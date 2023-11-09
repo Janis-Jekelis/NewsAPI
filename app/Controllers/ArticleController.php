@@ -17,10 +17,10 @@ class ArticleController
         return new Response("index", ["articles" => (new ArticleCollection())->getHeadlines($country)]);
 
     }
-    public function search($topic):Response
+    public function search($topic,?string $from=null, ?string $to=null):Response
     {
         return new Response("search", ["searchedArticles" => (
-            new ArticleCollection())->getSearchedArticles($topic)
+            new ArticleCollection())->getSearchedArticles($topic,$from, $to)
         ]);
 
 

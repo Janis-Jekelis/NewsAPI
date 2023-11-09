@@ -41,7 +41,11 @@ switch ($routeInfo[0]) {
             $response = (new $class())->{$method}($country);
         }
         if ($method=="search"){
-            $response = (new $class())->{$method}($_GET["search"]);
+            $from=null;
+            $to=null;
+            if (isset($_GET["from"])) $from = $_GET["from"];
+            if (isset($_GET["to"])) $to = $_GET["to"];
+            $response = (new $class())->{$method}($_GET["search"],$from,$to);
 
         }
         echo $twig->render($response->getViewName() . ".twig", $response->getData());

@@ -32,7 +32,6 @@ class ArticleCollection
 
             }
         }
-
         return $articles;
     }
     public function getHeadlines(string $country):array
