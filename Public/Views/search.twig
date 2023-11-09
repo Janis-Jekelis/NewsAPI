@@ -1,0 +1,14 @@
+{% include "/header.twig" %}
+
+<link rel="stylesheet" href="Views/CSS/style.css">
+
+<div class="article-container" >
+    {% for article in searchedArticles %}
+        <div class="article">
+            <a href="{{ article.getNewsLink() }}" target="_blank">
+                <img src={{ article.getImageLink()}} >
+                <h2 class="headline">{{ article.getTitle()}}</h2>
+            </a>
+        </div>
+    {% endfor %}
+</div>

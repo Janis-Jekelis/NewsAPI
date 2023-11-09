@@ -1,44 +1,11 @@
-<nav>
-<div class="country">
-  <div class="selected">
-      English
-      <div>
-          <ul>
-              <li>
-                  <a class="us" href="/?country=us">
-                      United States
-                  </a>
-              </li>
+{% include "/header.twig" %}
 
-              <li>
-                  <a class="ua " href="/?country=ua">
-                      Ukraine
-                  </a>
-              </li>
-              <li>
-                  <a class="ca" href="/?country=ca">
-                      Canada
-                  </a>
-              </li>
-          </ul>
-      </div>
+<link rel="stylesheet" href="Views/CSS/style.css">
 
-  </div>
-</div>
-
-</nav>
-
-
-
-
-
-
-
-<link rel="stylesheet" href="Views/style.css">
 <div class="article-container" >
 {% for article in articles %}
     <div class="article">
-        <a href={{ article.getNewsLink() }}>
+        <a href="{{ article.getNewsLink() }}" target="_blank">
             <img src={{ article.getImageLink()}} >
             <h2 class="headline">{{ article.getTitle()}}</h2>
         </a>

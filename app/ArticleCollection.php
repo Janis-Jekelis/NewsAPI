@@ -8,22 +8,31 @@ use App\Models\Article;
 class ArticleCollection
 {
 
-    private const API_KEY = "5dfbdad637d04a86929dd50bd4084d95";
+    private const API_KEY = "1d109792a10a4c41939f87200bd0ba08";
     private string $sourceName = "Biztoc.com";
 
 
-    public function getSearchedArticles($topic): array
+    public function getSearchedArticles(string $topic, ?string $from=null, ?string $to=null ): array
     {
-        $api="https://newsapi.org/v2/everything?q=$topic&from=2023-10-08&sortBy=publishedAt&apiKey=".self::API_KEY;
+        if($from==null)$from="2023-11-08";
+        if($to==null)$to="2023-11-08";
+        $api="https://newsapi.org/v2/everything?q=$topic&from=$from&to=$to&sortBy=popularity&apiKey=".self::API_KEY;
         $client = new \GuzzleHttp\Client();
         $req=$client->get($api);
         $response =json_decode($req->getBody()->getContents());
         $articles = [];
-        foreach ($response as $article) {
-            if ($article->source->name == $this->sourceName) {
-                $articles[] =new Article($article->title,$article->description);
+        foreach ($response->articles as $article) {
+            if($article->urlToImage!=null) {
+                $articles[] = new Article(
+                    $article->title,
+                    $article->description,
+                    $article->urlToImage,
+                    $article->url
+                );
+
             }
         }
+
         return $articles;
     }
     public function getHeadlines(string $country):array

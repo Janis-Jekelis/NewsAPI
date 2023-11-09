@@ -8,6 +8,7 @@ $twig = new \Twig\Environment($loader);
 
 $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
     $r->addRoute('GET', '/', ['App\Controllers\ArticleController',"index"]);
+    $r->addRoute('GET', '/search', ['App\Controllers\ArticleController',"search"]);
 });
 
 // Fetch method and URI from somewhere
@@ -34,11 +35,15 @@ switch ($routeInfo[0]) {
         $handler = $routeInfo[1];
         [$class,$method]=[$handler[0],$handler[1]];
         $vars = $routeInfo[2];
-        $language=null;
-        if(isset($_GET["country"]))$language=$_GET["country"];
-        $response=(new $class())->{$method}($language);
-        var_dump($_GET["country"]);
+        if ($method=="index") {
+            $country = null;
+            if (isset($_GET["country"])) $country = $_GET["country"];
+            $response = (new $class())->{$method}($country);
+        }
+        if ($method=="search"){
+            $response = (new $class())->{$method}($_GET["search"]);
 
+        }
         echo $twig->render($response->getViewName() . ".twig", $response->getData());
         break;
 }

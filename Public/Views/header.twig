@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="Views/CSS/header.css">
+<link rel="stylesheet" href="Views/CSS/search.css">
+<header>
+    <nav>
+        <div class="country">
+            <div class="selected">
+                <div>
+                    <ul>
+                        <li>
+                            <a class="us" href="/?country=us"></a>
+                        </li>
+
+                        <li>
+                            <a class="ua " href="/?country=ua"></a>
+                        </li>
+                        <li>
+                            <a class="ca" href="/?country=ca"></a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+    <form style="text-align: right;" action="/search" method="get">
+        <input class="main-search" type="text" name="search" placeholder="Search topic">
+        <br>
+        <input class="from"  type="text" name="from" placeholder="FROM">
+        <input class="to" type="text" name="to" placeholder="TO">
+        <br>
+        <button type="submit">Search</button>
+    </form>
+
+
+    <hr>
+</header>
