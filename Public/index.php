@@ -34,7 +34,8 @@ switch ($routeInfo[0]) {
         $handler = $routeInfo[1];
         [$class,$method]=[$handler[0],$handler[1]];
         $vars = $routeInfo[2];
-        $response=(new $class())->{$method}();
+        $response=(new $class())->{$method}($_GET["language"]);
+        var_dump($_GET["language"]);
 
         echo $twig->render($response->getViewName() . ".twig", $response->getData());
         break;

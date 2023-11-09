@@ -11,7 +11,9 @@ class ArticleController
 
        public function index(?string $country = null, ?string $topic = null): Response
     {
-        if ($country == null) $country = "us";
+        if ($country == null) {
+            $country = "us";
+        }
         return new Response("index", ["articles" => (new ArticleCollection())->getHeadlines($country)]);
 
     }
