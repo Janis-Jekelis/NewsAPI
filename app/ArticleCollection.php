@@ -38,7 +38,8 @@ class ArticleCollection
                 $articles[] = new Article(
                     $article->title,
                     $article->description,
-                    $article->urlToImage
+                    $article->urlToImage,
+                    $article->url
                 );
             }
         }

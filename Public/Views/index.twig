@@ -1,11 +1,35 @@
-<form action="/" method="GET">
-    <select name="language">
-        <option value="us">English</option>
-        <option value="ca">Canada</option>
-        <option value="ua">Ukraine</option>
-    </select>
-    <input type="submit" value="Submit">
-</form>
+<nav>
+<div class="country">
+  <div class="selected">
+      English
+      <div>
+          <ul>
+              <li>
+                  <a class="us" href="/?country=us">
+                      United States
+                  </a>
+              </li>
+
+              <li>
+                  <a class="ua " href="/?country=ua">
+                      Ukraine
+                  </a>
+              </li>
+              <li>
+                  <a class="ca" href="/?country=ca">
+                      Canada
+                  </a>
+              </li>
+          </ul>
+      </div>
+
+  </div>
+</div>
+
+</nav>
+
+
+
 
 
 
@@ -14,8 +38,10 @@
 <div class="article-container" >
 {% for article in articles %}
     <div class="article">
+        <a href={{ article.getNewsLink() }}>
             <img src={{ article.getImageLink()}} >
             <h2 class="headline">{{ article.getTitle()}}</h2>
+        </a>
     </div>
 {% endfor %}
 </div>

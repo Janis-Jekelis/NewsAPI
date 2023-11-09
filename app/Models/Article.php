@@ -7,12 +7,19 @@ class Article
 private string $title;
 private string $description;
 private string $imageLink;
-    public function __construct(string $title, string $description, $imageLink)
+private string $newsLink;
+    public function __construct(
+        string $title,
+        string $description,
+        string $imageLink,
+        string $newsLink
+    )
     {
 
         $this->title = $title;
         $this->description = $description;
         $this->imageLink=$imageLink;
+        $this->newsLink=$newsLink;
     }
 
     public function getTitle(): string
@@ -29,5 +36,10 @@ private string $imageLink;
     public function getImageLink(): string
     {
         return $this->imageLink;
+    }
+
+    public function getNewsLink(): string
+    {
+        return $this->newsLink;
     }
 }
