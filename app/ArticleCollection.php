@@ -7,11 +7,7 @@ use App\Models\Article;
 
 class ArticleCollection
 {
-
     private const API_KEY = "1d109792a10a4c41939f87200bd0ba08";
-    private string $sourceName = "Biztoc.com";
-
-
     public function getSearchedArticles(string $topic, ?string $from=null, ?string $to=null ): array
     {
         if($from==null)$from="2023-11-08";
@@ -22,15 +18,11 @@ class ArticleCollection
         $response =json_decode($req->getBody()->getContents());
         $articles = [];
         foreach ($response->articles as $article) {
-            if($article->urlToImage!=null) {
                 $articles[] = new Article(
                     $article->title,
-                    $article->description,
-                    $article->urlToImage,
-                    $article->url
+                    $article->url,
+                    $article->urlToImage
                 );
-
-            }
         }
         return $articles;
     }
@@ -42,14 +34,12 @@ class ArticleCollection
         $response =json_decode($req->getBody()->getContents());
         $articles = [];
         foreach ($response->articles as $article){
-            if($article->urlToImage!=null) {
                 $articles[] = new Article(
                     $article->title,
-                    $article->description,
-                    $article->urlToImage,
-                    $article->url
+                    $article->url,
+                    $article->urlToImage
+
                 );
-            }
         }
 
         return  $articles;

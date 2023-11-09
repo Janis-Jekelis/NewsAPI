@@ -5,20 +5,20 @@ namespace App\Models;
 class Article
 {
 private string $title;
-private string $description;
 private string $imageLink;
 private string $newsLink;
     public function __construct(
         string $title,
-        string $description,
-        string $imageLink,
-        string $newsLink
+        string $newsLink,
+        ?string $imageLink=null
     )
     {
-
         $this->title = $title;
-        $this->description = $description;
-        $this->imageLink=$imageLink;
+        if($imageLink==null) {
+            $this->imageLink = "/paper.jpg";
+        }else {
+            $this->imageLink=$imageLink;
+        }
         $this->newsLink=$newsLink;
     }
 
@@ -28,12 +28,7 @@ private string $newsLink;
     }
 
 
-    public function getDescription(): string
-    {
-        return $this->description;
-    }
-
-    public function getImageLink(): string
+    public function getImageLink():string
     {
         return $this->imageLink;
     }
