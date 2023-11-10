@@ -1,61 +1,64 @@
-header{
+header {
     background-color: #C0C0C0;
     padding-top: 10px;
 }
-nav
-{
+
+nav {
     width: 20%;
 }
-.selected{
-    cursor: pointer;
-   }
 
-.selected:before{
+.selected {
+    cursor: pointer;
+}
+
+.selected:before {
     content: "";
     display: block;
     width: 64px;
     height: 34px;
-    background-image: url("../Flags/us.png ");
+    background-image: url("../img/us.png ");
 
 }
-.country ul{
+
+.country ul {
     display: none;
 
 }
-.country:hover ul{
+
+.country:hover ul {
     display: block;
 }
 
-.country ul li a{
+.country ul li a {
     width: 125px;
-    display:block;
-    padding: 5px ;
+    display: block;
+    padding: 5px;
 }
 
-.us:before{
+.us:before {
     content: "";
     display: block;
     width: 64px;
     height: 34px;
-    background-image: url("../Flags/us.png ");
+    background-image: url("../img/us.png ");
 }
 
-.ua:before{
+.ua:before {
     content: "";
     display: block;
     width: 64px;
     height: 43px;
-    background-image: url("../Flags/ua.png ");
+    background-image: url("../img/ua.png ");
 }
+
 .ca:before {
     content: "";
     display: block;
     width: 64px;
     height: 32px;
-    background-image: url("../Flags/ca.png ");
+    background-image: url("../img/ca.png ");
 }
-.country ul li{
+
+.country ul li {
     list-style: none;
-
 }
-
