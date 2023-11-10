@@ -44,10 +44,18 @@ switch ($routeInfo[0]) {
         if ($method=="search"){
             $from=null;
             $to=null;
+            try {
+
+
             if (($_GET["from"])!=null) {$from = (Carbon::parse($_GET["from"]))->format("Y-m-d") ;};
             if (($_GET["to"])!=null) $to = (Carbon::parse($_GET["to"]))->format("Y-m-d") ;
 
-            $response = (new $class())->{$method}($_GET["search"],$from,$to);
+                $response = (new $class())->{$method}($_GET["search"],$from,$to);
+                $twig->addGlobal("global",["search"=>"Invalid search parameters"]);
+            }catch (Exception $e){
+                echo header('Location: /');
+            }
+
 
         }
         echo $twig->render($response->getViewName() . ".twig", $response->getData());
