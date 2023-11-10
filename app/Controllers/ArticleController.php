@@ -5,6 +5,7 @@ namespace App\Controllers;
 
 use App\ArticleCollection;
 use App\Response;
+use Carbon\Carbon;
 
 class ArticleController
 {
@@ -19,6 +20,7 @@ class ArticleController
     }
     public function search($topic,?string $from=null, ?string $to=null):Response
     {
+
         return new Response("search", ["searchedArticles" => (
             new ArticleCollection())->getSearchedArticles($topic,$from, $to)
         ]);

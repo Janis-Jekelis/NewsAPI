@@ -8,6 +8,7 @@
             <a href="{{ article.getNewsLink() }}" target="_blank">
                 <img src={{ article.getImageLink()}} >
                 <h2 class="headline">{{ article.getTitle()}}</h2>
+                <p><p>{{ article.getPublishedAt() }}</p></p>
             </a>
         </div>
     {% endfor %}

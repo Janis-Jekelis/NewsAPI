@@ -1,6 +1,7 @@
 <?php
 declare(strict_types=1);
 use App\ArticleCollection;
+use Carbon\Carbon;
 require_once __DIR__."/../vendor/autoload.php";
 
 $loader = new \Twig\Loader\FilesystemLoader(__DIR__."/../Public/Views");
@@ -43,8 +44,9 @@ switch ($routeInfo[0]) {
         if ($method=="search"){
             $from=null;
             $to=null;
-            if (isset($_GET["from"])) $from = $_GET["from"];
-            if (isset($_GET["to"])) $to = $_GET["to"];
+            if (($_GET["from"])!=null) {$from = (Carbon::parse($_GET["from"]))->format("Y-m-d") ;};
+            if (($_GET["to"])!=null) $to = (Carbon::parse($_GET["to"]))->format("Y-m-d") ;
+
             $response = (new $class())->{$method}($_GET["search"],$from,$to);
 
         }
