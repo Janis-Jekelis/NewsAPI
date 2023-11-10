@@ -1,5 +1,7 @@
 <?php
+
 declare(strict_types=1);
+
 namespace App;
 
 class Response
@@ -10,7 +12,6 @@ class Response
 
     public function __construct(string $viewName, array $data)
     {
-
         $this->viewName = $viewName;
         $this->data = $data;
     }
