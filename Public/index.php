@@ -51,7 +51,6 @@ switch ($routeInfo[0]) {
             if (($_GET["to"])!=null) $to = (Carbon::parse($_GET["to"]))->format("Y-m-d") ;
 
                 $response = (new $class())->{$method}($_GET["search"],$from,$to);
-                $twig->addGlobal("global",["search"=>"Invalid search parameters"]);
             }catch (Exception $e){
                 echo header('Location: /');
             }
